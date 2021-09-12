@@ -1,0 +1,12 @@
+install xampp
+install node.js
+
+pwd
+ls
+node -v
+npm init -y
+npm i --save nodemon
+npm i express mysql dotenv hbs
+npm i bcryptjs
+npm i cookie-parser jsonwebtoken
+npm start
