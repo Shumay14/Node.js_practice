@@ -3,6 +3,10 @@ const path = require("path");
 const mysql = require("mysql");
 const dotenv = require("dotenv");
 
+// routes set
+const pages = require("./routes/pages");
+const auth = require("./routes/auth");
+
 dotenv.config({ path: "./.env" });
 
 const app = express();
@@ -37,8 +41,8 @@ db.connect((error) => {
 });
 
 // Define Routes
-app.use("/", require("./routes/pages"));
-app.use("/auth", require("./routes/auth"));
+app.use("/", pages);
+app.use("/auth", auth);
 
 app.listen(5000, () => {
   console.log("Server strared on Port 5000");
