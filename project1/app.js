@@ -1,15 +1,16 @@
+// set module
 const express = require("express");
 const path = require("path");
 const mysql = require("mysql");
+
 const dotenv = require("dotenv");
-
-// routes set
-const pages = require("./routes/pages");
-const auth = require("./routes/auth");
-
 dotenv.config({ path: "./.env" });
 
 const app = express();
+
+// set routes
+const pages = require("./routes/pages");
+const auth = require("./routes/auth");
 
 const db = mysql.createConnection({
   host: process.env.DATABASE_HOST,
@@ -18,8 +19,9 @@ const db = mysql.createConnection({
   database: process.env.DATABASE,
 });
 
+// app setting ===
+
 const publicDirectory = path.join(__dirname, "./public");
-// console.log(__dirname);
 
 app.use(express.static(publicDirectory));
 
@@ -47,3 +49,5 @@ app.use("/auth", auth);
 app.listen(5000, () => {
   console.log("Server strared on Port 5000");
 });
+
+module.exports = app;
