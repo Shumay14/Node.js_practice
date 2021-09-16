@@ -1,3 +1,4 @@
+// control and authorize user info.
 const mysql = require("mysql");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -8,6 +9,7 @@ const db = mysql.createConnection({
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
+  image: process.env.DATBASE_IMAGE,
 });
 
 // submitted data

@@ -10,13 +10,14 @@ const app = express();
 
 // set routes
 const pages = require("./routes/pages");
-const auth = require("./routes/auth");
+const user = require("./routes/user");
 
 const db = mysql.createConnection({
   host: process.env.DATABASE_HOST,
   user: process.env.DATABASE_USER,
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE,
+  image: process.env.DATBASE_IMAGE,
 });
 
 // app setting ===
@@ -44,9 +45,11 @@ db.connect((error) => {
 
 // Define Routes
 app.use("/", pages);
-app.use("/auth", auth);
+app.use("/user", user);
 
-app.listen(5000, () => {
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
   console.log("Server strared on Port 5000");
 });
 
